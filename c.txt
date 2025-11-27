@@ -1,0 +1,14 @@
+this
+is
+c.txt
+created
+for
+the
+purpose
+of
+fast-forward
+testing
+in
+git
+----------------------
+
