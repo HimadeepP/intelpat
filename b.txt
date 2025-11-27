@@ -1,0 +1,17 @@
+this
+is
+b.txt
+file
+created
+at
+intellipat
+for
+testing
+prupose
+asusual
+in
+the
+interpretation
+of
+os
+
