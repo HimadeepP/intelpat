@@ -1,0 +1,4 @@
+Till 
+now the scenario is i have created a,b,c files in master and pushed to repo
+as well checkout to featurebranch and also pushed to repo
+now i need to created d file and chekc the fast forwrad merging
