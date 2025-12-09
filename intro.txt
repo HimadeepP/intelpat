@@ -1,0 +1,130 @@
+Thank you for the opportunity
+My name is [Your Name], and I have a little over six years of hands-on experience as a Linux System Administrator. Over the years, I’ve worked extensively with Ubuntu environment,handling 
+system administration, 
+automation, 
+performance tuning, 
+patching, and 
+troubleshooting
+
+My core strengths include server provisioning, configuration management, shell scripting, and automation using tools like Ansible, along with experience managing 
+web servers, 
+DNS,
+virtualization (VMware),
+have solid experience with monitoring tools like Zabbix
+
+In my recent role, I was responsible for optimizing system performance, implementing security hardening, enhancing infrastructure automation, and ensuring high availability for critical production systems
+
+
+If a Linux server is stuck in emergency mode, how do you troubleshoot?
+======================================================================
+Check errors: journalctl -xb
+Wrong /etc/fstab entries
+LVM volume failure
+Missing disk
+Fix fstab entry (nofail or UUID)
+
+
+How do you extend an LVM logical volume and filesystem?
+========================================================
+pvcreate /dev/sdb
+vgextend VGname /dev/sdb
+lvextend -r -L +20G /dev/VGname/LVname
+
+
+You see 100% disk usage but files look normal. Why?
+=====================================================
+Deleted files still held by processes.
+lsof | grep deleted
+systemctl restart <service>
+
+
+
+Difference between EXT4 and XFS?
+=================================
+EXT4 → older, stable
+XFS → better for large files, supports online resizing (grow only)
+
+
+
+What is the difference between NFS soft and hard mount?
+========================================================
+Soft → timeout error, possible corruption
+Hard → keeps retrying, safe for production
+
+
+How do you permanently mount an NFS share?
+===========================================
+/etc/fstab
+server:/share  /mnt/nfs  nfs  defaults  0 0
+
+
+What is Ansible and how does it work?
+=======================================
+Agentless tool
+Uses SSH
+YAML playbooks
+Uses modules for idempotent execution
+
+What is a handler in Ansible?
+===============================
+A handler runs only when notified.
+Example: restart service if config file changes
+
+How do you pass variables in Ansible?
+======================================
+inventory
+playbook vars
+vars_files
+
+VMware / Hyper-V — Intermediate
+=================================
+Hot migration → VM moves while powered ON
+Cold migration → VM must be powered OFF
+Clone → Duplicate VM
+
+
+What is a snapshot?
+====================
+Snapshot captures VM state + disk at a point in time.
+Used for rollback.
+
+You should not keep snapshots for long → performance issues.
+
+Difference between Image and Container?
+=========================================
+Image → read-only template
+Container → running instance of image
+
+How to list running containers?
+=================================
+
+docker -ps
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

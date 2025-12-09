@@ -1,0 +1,183 @@
+Vendor releases patches:
+RedHat → RHSA (Red Hat Security Advisory)
+Ubuntu → USN (Ubuntu Security Notices)
+
+Cybersecurity team scans CVEs.
+They create Patch Bulletin / Patch Advisory and share with Infra team.
+
+CVE-2023-XYZ affecting OpenSSL
+Servers impacted: 312 Linux servers.
+
+✅ 2. Impact Analysis by Linux Team
+
+Which servers are impacted
+Which applications running on those servers
+Any dependency or risk
+Kernel update required or not
+Potential downtime required or not
+Need reboot or not
+
+tools used
+===========
+Satellite Server (RedHat)
+
+✅ 3. Approval Process (CAB – Change Advisory Board)
+
+
+No patching happens without a Change Request (CR).
+Linux team raises:
+Normal CR → If planned monthly patching
+Emergency CR → For critical zero-day vulnerability
+
+CAB checks:
+Downtime approval from Application owners
+Business impact
+Rollback plan
+Validation plan
+
+Once approved → change moves to Scheduled state.
+
+✅ 4. Pre-Patching Preparation
+
+✔ Health checks
+	uptime  
+	df -h  
+	free -m  
+	top  
+	systemctl status <services>
+✔ Backup / Snapshot
+	VMware snapshot / Hyper-V checkpoint
+	Database backup
+	Config backup (/etc/) using tar
+✔ Application team approval
+App should be in maintenance mode or removed from load balancer.
+
+✔ OS lock removal
+Make sure no package process running: using ps -aux
+
+✅ 5. Patching Execution (Mostly Automated)
+Patching is done by enterprise automation tools:
+Ansible Tower / AWX
+RedHat Satellite
+Jenkins pipelines (in DevOps teams)
+
+How patching is done:
+Servers divided into batches → Batch1, Batch2, Batch3
+Patching jobs are scheduled automatically
+Each job applies:
+	OS security patches
+	Library updates
+	Kernel updates (if required)
+
+Example (RHEL Satellite):
+	Satellite pushes repository updates to clients
+	Clients run scheduled update jobs (night window)
+	Satellite reports compliance % after patching
+✅ 6. Reboot Management (If Kernel Updated)
+Reboot is the most sensitive part.
+✅ 7. Post-Patching Validation
+Services running
+No errors in logs
+No high CPU or memory
+FS mounted
+Application team validates:
+	API response
+	DB connection
+	Functional checks
+✅ 8. Vulnerability Re-scan
+Qualys
+Nessus
+✅ 9. Documentation & Change Closure
+Linux team updates:
+Before and after screenshots
+Patch reports
+Validation results
+CAB closes the ticket.
+
+
+
+“If a system has a kernel panic, I first boot into rescue or recovery mode via GRUB, check kernel and system logs (dmesg, journalctl -k), verify and repair the filesystem (fsck), reinstall or rollback the kernel if corrupted, check hardware if needed, update GRUB, and then reboot into a stable kernel. I also ensure backups and multiple kernels to prevent recurrence.”
+
+
+
+useradd -m -s /bin/bash username add user
+
+usermod -aG groupname username add user tp grop
+
+
+userdel -r username delete the user
+
+
+usermod -L username lock user account
+
+usermod -U username unlock user account
+
+chage -E 0 username immediate account expiry
+
+chage -d 0 username  change passwd in next login
+
+chage -M 90 -m 7 -w 10 username age of pa
+
+chage -l username check username infor
+
+useradd -M -s /sbin/nologin username create username with nologin
+
+/etc/sudoers -- add 
+
+sudo visudo
+
+username ALL=(ALL) ALL
+
+
+while IFS=: read username password; do
+    sudo useradd -m $username
+    echo "$username:$password" | sudo chpassword
+echo < users.csv
+
+
+user reports im not able to login:
+
+first will check 
+
+grep username /etc/passwd
+
+check user account is locked
+
+password -S username
+
+check password expired 
+
+chage -L username
+
+ensure /etc/shells and home directory exists
+
+
+
+
+sudo groupadd nic
+usermod -aG nic person1
+chown :nic /nic/folder
+chmod 770 /nic/folder
+
+
+
+groupadd -g 2001 groupname
+
+useradd -u 1500 -g 2000 -m -s /bin/bash username
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
